@@ -1,0 +1,203 @@
+# Copyright (C) 2023 TimeNow.zone
+# This file is distributed under the The 3-Clause BSD.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Digital Clock 🕒 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-digital-clock\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-31T20:35:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: simple-digital-clock\n"
+
+#. Plugin Name of the plugin
+msgid "Simple Digital Clock 🕒"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://timenow.zone/widgets/simple-digital"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Simple Digital Clock — is a magic 🪄 and easy-to-use with beautiful UI digital clock with support multi-language, locale, date, caption and time zone."
+msgstr ""
+
+#. Author of the plugin
+msgid "TimeNow.zone"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://timenow.zone/"
+msgstr ""
+
+#: widget_init.php:59
+msgid "Settings"
+msgstr ""
+
+#: widget_init.php:102
+msgid "Simple Digital Clock Widget"
+msgstr ""
+
+#: widget_init.php:103
+msgid "A simple block for displaying Digital Clock."
+msgstr ""
+
+#: widget_init.php:104
+msgid "Container"
+msgstr ""
+
+#: widget_init.php:105
+msgid "Caption"
+msgstr ""
+
+#: widget_init.php:106
+msgid "Width"
+msgstr ""
+
+#: widget_init.php:107
+msgid "Full Size"
+msgstr ""
+
+#: widget_init.php:108
+msgid "Rounded"
+msgstr ""
+
+#: widget_init.php:109
+msgid "Border"
+msgstr ""
+
+#: widget_init.php:110
+msgid "Text Align"
+msgstr ""
+
+#: widget_init.php:111
+msgid "Select the alignment of the text within the container."
+msgstr ""
+
+#: widget_init.php:112
+msgid "Shadow"
+msgstr ""
+
+#: widget_init.php:113
+msgid "Select the shadow of the container."
+msgstr ""
+
+#: widget_init.php:114
+msgid "Background Color"
+msgstr ""
+
+#: widget_init.php:115
+msgid "Color"
+msgstr ""
+
+#: widget_init.php:116
+msgid "Gradient"
+msgstr ""
+
+#: widget_init.php:117
+msgid "Options"
+msgstr ""
+
+#: widget_init.php:118
+msgid "Time Zone"
+msgstr ""
+
+#: widget_init.php:119
+msgid "Display"
+msgstr ""
+
+#: widget_init.php:120
+msgid "Google Fonts"
+msgstr ""
+
+#: widget_init.php:121
+msgid "Google fonts are loading from the CDN, they are not included in the plugin."
+msgstr ""
+
+#: widget_init.php:122
+msgid "Locale"
+msgstr ""
+
+#: widget_init.php:123
+msgid "Language of date and including the time display format."
+msgstr ""
+
+#: widget_init.php:124
+msgid "About"
+msgstr ""
+
+#: widget_init.php:125
+msgid "❤️ Rate plugin ★★★★★"
+msgstr ""
+
+#: widget_init.php:126
+msgid "Second"
+msgstr ""
+
+#: widget_init.php:127
+msgid "Date"
+msgstr ""
+
+#: widget_init.php:128
+msgid "AM/PM"
+msgstr ""
+
+#: widget_init.php:129
+msgid "Left"
+msgstr ""
+
+#: widget_init.php:130
+msgid "Center"
+msgstr ""
+
+#: widget_init.php:131
+msgid "Right"
+msgstr ""
+
+#: widget_init.php:132
+msgid "Select the Shadow of the text within the container."
+msgstr ""
+
+#: widget_init.php:133
+msgid "Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background."
+msgstr ""
+
+#: widget_init.php:134
+msgid "Time"
+msgstr ""
+
+#: widget_init.php:135
+msgid "Clock"
+msgstr ""
+
+#: widget_init.php:136
+msgid "Digital"
+msgstr ""
+
+#: widget_init.php:137
+msgid "Simple"
+msgstr ""
+
+#: widget_init.php:138
+msgid "Widget"
+msgstr ""
+
+#: widget_init.php:139
+msgid "DEMO 👀"
+msgstr ""
+
+#: widget_init.php:140
+msgid "None"
+msgstr ""
+
+#: widget_init.php:141
+msgid "Clear All Colors"
+msgstr ""
+
+#: widget_init.php:142
+msgid "Clear Gradient"
+msgstr ""
