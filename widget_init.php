@@ -99,7 +99,7 @@ function simple_digital_clock_block_register_block() {
     wp_localize_script('simple-digital-clock-block-editor-script', 'blockData', [
         'locale' => get_locale(),
         'i18n' => [
-            'title' => __('Simple Digital Clock Widget', 'simple-digital-clock'),
+            'title' => __('Simple Digital Clock', 'simple-digital-clock'),
             'description' => __('A simple block for displaying Digital Clock.', 'simple-digital-clock'),
             'container' => __('Container', 'simple-digital-clock'),
             'caption' => __('Caption', 'simple-digital-clock'),
