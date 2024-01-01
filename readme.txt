@@ -12,18 +12,20 @@ License URI: https://opensource.org/license/bsd-3-clause/
 Is a magic 🪄 and easy-to-use with beautiful UI digital clock with support multi-language, locale, date, caption and time zone.
 
 == 📌 Description ==
-The Digital Clock Widget — 
+The Digital Clock Widget – the perfect addition to your website! This sleek and minimalist digital clock Gutenberg block (widget) offers a quick and easy way to display the current time on your site. With its clean design and unobtrusive style, it seamlessly blends into any webpage. Whether you're running a blog, an e-commerce store, or a personal website, our widget keeps your visitors informed with accurate, real-time information. Easy to install and highly customizable, it's the ideal choice for adding a touch of professionalism to your online presence. Upgrade your website today with the Simple Digital Clock Widget and keep your audience in sync with the times!
 
 = ⭐️ FEATURES ⭐️ =
-* Locale support: format time and date
-* Time Zone
-* Google Fonts
-* Pure JavaScript 9kb (gzip), no dependencies;
-* Flexible settings and customizable design;
-* Processed on a third-party server;
-* SSL support;
-* Mobile-friendly;
-* SEO-friendly.
+* 🚀 Lightweight (9kb gzip) with CDN support;
+* 🗣 Locale support: format time and date;
+* 🌐 Time zone support included;
+* 📝 Uses Google Mono Font for a sleek look;
+* 🎨 Flexible styling options;
+* 🖥️ Processed on a third-party server;
+* 💯 Completely free, no advertisements;
+* 🔒 SSL support;
+* 📱 Mobile-friendly;
+* 🔍 SEO-friendly.
+
 
 == 📌 Installation ==
 
@@ -38,11 +40,6 @@ The Digital Clock Widget —
 2. Upload the "Simple Digital Clock" directory to your "/wp-content/plugins/" directory, using your favorite method (ftp, sftp, scp, etc...).
 3. Activate "Simple Digital Clock" from your Plugins page.
 4. Add widgets on yourdomain.com/wp-admin/widgets.php page.
-
-== Screenshots ==
-1. screenshot-1.gif - Widget preview (animation)
-2. screenshot-2.jpg - Settings (admin)
-3. screenshot-3.png - Widget UI
 
 == Changelog ==
 = 0.1.0 =
