@@ -22,19 +22,19 @@ if (!defined('ABSPATH')) {
 }
 // Exit if accessed directly
 
-define('DCW_PATH', plugin_dir_path(__FILE__));
-define('DCW_URL', plugin_dir_url(__FILE__));
-define('DCW_NAME', 'Simple Digital Clock 🕒');
-define('DCW_PLUGIN_SLUG', 'simple-digital-clock');
+define('SDC_PATH', plugin_dir_path(__FILE__));
+define('SDC_URL', plugin_dir_url(__FILE__));
+define('SDC_NAME', 'Simple Digital Clock 🕒');
+define('SDC_PLUGIN_SLUG', 'simple-digital-clock');
 
-if(file_exists(plugin_dir_path(__FILE__) . 'includes/dcw-admin-notices.php')) {
-    include('includes/dcw-admin-notices.php');
+if(file_exists(plugin_dir_path(__FILE__) . 'includes/simple-digital-clock-admin-notices.php')) {
+    include('includes/simple-digital-clock-admin-notices.php');
 
-    $admin_notice = DCW_Admin_Notices::get_instance();
-    $admin_notice->info('Rate', 'rate');
+    $admin_notice = SDC_Admin_Notices::get_instance();
+    $admin_notice->info(__('Rate', 'simple-digital-clock'), 'rate');
 }
 
-class DCW_digital_clock_widget
+class SDC_digital_clock_widget
 {
     protected static $_instance = null;
 
@@ -49,14 +49,14 @@ class DCW_digital_clock_widget
 
     public function __construct()
     {
-        add_action('admin_menu', [$this, 'DCW_add_plugin_page']);
-        add_filter('plugin_action_links', [$this, 'DCW_plugin_action_links'], 10, 2);
+        add_action('admin_menu', [$this, 'SDC_add_plugin_page']);
+        add_filter('plugin_action_links', [$this, 'SDC_plugin_action_links'], 10, 2);
     }
 
-    public function DCW_plugin_action_links($links, $file)
+    public function SDC_plugin_action_links($links, $file)
     {
-        if ($file == plugin_basename(DCW_PATH.'/widget_init.php')) {
-            $links[] = '<a href="'.admin_url('admin.php?page='.DCW_PLUGIN_SLUG).'">'.__('Settings', 'simple-digital-clock').'</a>';
+        if ($file == plugin_basename(SDC_PATH.'/widget_init.php')) {
+            $links[] = '<a href="'.admin_url('admin.php?page='.SDC_PLUGIN_SLUG).'">'.__('Settings', 'simple-digital-clock').'</a>';
         }
 
         return $links;
@@ -65,24 +65,24 @@ class DCW_digital_clock_widget
     /**
      * Add options page.
      */
-    public function DCW_add_plugin_page()
+    public function SDC_add_plugin_page()
     {
         add_options_page(
             'Settings Admin',
             'Simple Digital Clock',
             'manage_options',
-            DCW_PLUGIN_SLUG,
-            [$this, 'DCW_admin_settings_page']
+            SDC_PLUGIN_SLUG,
+            [$this, 'SDC_admin_settings_page']
         );
     }
 
-    public function DCW_admin_settings_page()
+    public function SDC_admin_settings_page()
     {
-        require_once DCW_PATH.'includes/dcw-admin-settings.php';
+        require_once SDC_PATH.'includes/simple-digital-clock-admin-settings.php';
     }
 }
 
-function DCW_load_plugin_textdomain()
+function SDC_load_plugin_textdomain()
 {
     load_plugin_textdomain('simple-digital-clock', false, basename(dirname(__FILE__)).'/languages/');
 }
@@ -130,7 +130,7 @@ function simple_digital_clock_block_register_block() {
             'center' => __('Center', 'simple-digital-clock'),
             'right' => __('Right', 'simple-digital-clock'),
             'shadowHelp' => __('Select the Shadow of the text within the container.', 'simple-digital-clock'),
-            'gradientHelp' => __('Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background.', 'simple-digital-clock'),
+            'gradientHelp' => __('Select a gradient (font color is automatically inverted based on background color). Note: the gradient is used on top of the background color.', 'simple-digital-clock'),
             'time' => __('Time', 'simple-digital-clock'),
             'clock' => __('Clock', 'simple-digital-clock'),
             'digital' => __('Digital', 'simple-digital-clock'),
@@ -159,6 +159,6 @@ function simple_digital_clock_block_register_block() {
 
 
 add_action('init', 'simple_digital_clock_block_register_block');
-add_action('plugins_loaded', 'DCW_load_plugin_textdomain');
+add_action('plugins_loaded', 'SDC_load_plugin_textdomain');
 
-$GLOBALS['DCW_digital_clock_widget'] = DCW_digital_clock_widget::get_instance();
+$GLOBALS['SDC_digital_clock_widget'] = SDC_digital_clock_widget::get_instance();
