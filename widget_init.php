@@ -143,21 +143,22 @@ function SDCW_block_register_block() {
         ],
     ]);
 
-    wp_register_script(
-        'simple-digital-clock',
-        SDCW_URL.'assets/public/js/simple-digital-clock.min.js',
-        [],
-        null,
-        true,
-    );
-
     register_block_type('simple-digital-clock-block/widget-block', [
         'editor_script' => 'simple-digital-clock-block-editor-script',
         'script' => 'simple-digital-clock-script',
     ]);
 }
 
-
+function SDCW_enqueue_scripts() {
+    wp_register_script(
+        'simple-digital-clock',
+        plugins_url('assets/public/js/simple-digital-clock.min.js', __FILE__),
+        [],
+        filemtime(plugin_dir_path(__FILE__) . 'assets/public/js/simple-digital-clock.min.js')
+    );
+    wp_enqueue_script('simple-digital-clock');
+}
+add_action('wp_enqueue_scripts', 'SDCW_enqueue_scripts');
 add_action('init', 'SDCW_block_register_block');
 add_action('plugins_loaded', 'SDCW_load_plugin_textdomain');
 

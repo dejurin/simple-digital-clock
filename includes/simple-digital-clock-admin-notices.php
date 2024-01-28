@@ -50,7 +50,7 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             );
             wp_enqueue_script(
                 'simple-digital-clock',
-                SDCW_URL.'assets/admin/js/simple-digital-clock.min.js',
+                SDCW_URL.'assets/public/js/simple-digital-clock.min.js',
             );
         }
 
