@@ -9,11 +9,11 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 ?>
 <div class="wrap">
-   <h1 class="wp-heading-inline"><?php echo SDC_NAME; ?></h1>
+   <h1 class="wp-heading-inline"><?php echo SDCW_NAME; ?></h1>
    <hr />
-   <h3><?php _e('Help', 'simple-digital-clock'); ?></h3>
+   <h3><?php esc_html_e('Help', 'simple-digital-clock'); ?></h3>
     <ul>
-        <li>ℹ️ <?php _e('Official website', 'simple-digital-clock'); ?>: <a href="https://timenow.zone/" target="_blank">TimenNow.zone</a></li>
-        <li>❓ <?php _e('Help', 'simple-digital-clock'); ?>: <a href="https://timenow.zone/" target="_blank"><?php _e('Support', 'simple-digital-clock'); ?></a></li>
+        <li>ℹ️ <?php esc_html_e('Official website', 'simple-digital-clock'); ?>: <a href="https://timenow.zone/" target="_blank">TimenNow.zone</a></li>
+        <li>❓ <?php esc_html_e('Help', 'simple-digital-clock'); ?>: <a href="https://timenow.zone/" target="_blank"><?php esc_html_e('Support', 'simple-digital-clock'); ?></a></li>
     </ul>
 </div>

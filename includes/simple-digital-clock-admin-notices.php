@@ -8,9 +8,9 @@ if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-if ( ! class_exists( 'SDC_Admin_Notices' ) ) {
+if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
 
-    class SDC_Admin_Notices {
+    class SDCW_Admin_Notices {
 
         private static $_instance;
         private $admin_notices;
@@ -34,9 +34,9 @@ if ( ! class_exists( 'SDC_Admin_Notices' ) ) {
         }
 
         public function action_admin_init() {
-            $dismiss_option = filter_input( INPUT_GET, 'SDC_dismiss', FILTER_SANITIZE_EMAIL );
+            $dismiss_option = filter_input( INPUT_GET, 'SDCW_dismiss', FILTER_SANITIZE_EMAIL );
             if ( is_string( $dismiss_option ) ) {
-                update_option( "SDC_dismissed_$dismiss_option", true );
+                update_option( "SDCW_dismissed_$dismiss_option", true );
                 wp_die();
             }
         }
@@ -45,8 +45,12 @@ if ( ! class_exists( 'SDC_Admin_Notices' ) ) {
             wp_enqueue_script('jquery');
             wp_enqueue_script(
                 'simple-digital-clock-notify',
-                SDC_URL.'assets/admin/js/simple-digital-clock-notify.js',
+                SDCW_URL.'assets/admin/js/simple-digital-clock-notify.js',
                 ['jquery']
+            );
+            wp_enqueue_script(
+                'simple-digital-clock',
+                SDCW_URL.'assets/admin/js/simple-digital-clock.min.js',
             );
         }
 
@@ -54,24 +58,24 @@ if ( ! class_exists( 'SDC_Admin_Notices' ) ) {
             foreach ( explode( ',', self::TYPES ) as $type ) {
                 foreach ( $this->admin_notices->{$type} as $admin_notice ) {
                     $dismiss_url = add_query_arg([
-                        'SDC_dismiss' => $admin_notice->dismiss_option
+                        'SDCW_dismiss' => $admin_notice->dismiss_option
                     ], admin_url() );
                     $screen = get_current_screen();
-                    if ( ! get_option( "SDC_dismissed_{$admin_notice->dismiss_option}" ) || strpos($screen->id, 'simple-digital-clock') !== false) {
+                    if ( ! get_option( "SDCW_dismissed_{$admin_notice->dismiss_option}" ) || strpos($screen->id, 'simple-digital-clock') !== false) {
                         ?><div class="notice is-dismissible simple-digital-clock-notice notice-<?php echo $type;
                             if ( $admin_notice->dismiss_option ) {
                                 echo ' is-dismissible" data-dismiss-url="' . esc_url( $dismiss_url );
                             } ?>">
                             <div class="simple-digital-clock-rate-notice-container">
                                 <div class="logo-img">
-                                    <img alt="<?php echo SDC_NAME; ?>" src="<?php echo SDC_URL.'assets/admin/img/icon.svg'; ?>" style="width:96px">
+                                    <img alt="<?php echo SDCW_NAME; ?>" src="<?php echo esc_url(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
                                 </div>
                                 <div>
-                                    <h2>🥰 <?php _e('Please rate our free', 'simple-digital-clock'); ?>
-                                    &laquo;<?php echo SDC_NAME; ?>&raquo;</h2>
+                                    <h2>🥰 <?php esc_html_e('Please rate our free', 'simple-digital-clock'); ?>
+                                    &laquo;<?php echo SDCW_NAME; ?>&raquo;</h2>
                                     <hr>
-                                    <p><?php _e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php _e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php _e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
-                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php echo SDC_URL.'assets/admin/img/stars.png'; ?>" alt="<?php _e('Rating', 'simple-digital-clock'); ?>"></a></p>
+                                    <p><?php esc_html_e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php esc_html_e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php _e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
+                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php echo esc_url(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_html_e('Rating', 'simple-digital-clock'); ?>"></a></p>
                                 </div>
                             </div>
                         </div>
