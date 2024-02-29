@@ -34,6 +34,7 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
         }
 
         public function action_admin_init() {
+            echo "OK";
             $dismiss_option = filter_input( INPUT_GET, 'SDCW_dismiss', FILTER_SANITIZE_EMAIL );
             if ( is_string( $dismiss_option ) ) {
                 update_option( "SDCW_dismissed_$dismiss_option", true );
@@ -61,21 +62,21 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
                         'SDCW_dismiss' => $admin_notice->dismiss_option
                     ], admin_url() );
                     $screen = get_current_screen();
-                    if ( ! get_option( "SDCW_dismissed_{$admin_notice->dismiss_option}" ) || strpos($screen->id, 'simple-digital-clock') !== false) {
-                        ?><div class="notice is-dismissible simple-digital-clock-notice notice-<?php echo $type;
+                    if (! get_option( "SDCW_dismissed_{$admin_notice->dismiss_option}" ) == '1' || strpos($screen->id, 'simple-digital-clock') !== false) {
+                        ?><div class="notice is-dismissible simple-digital-clock-notice notice-<?php esc_attr_e($type);
                             if ( $admin_notice->dismiss_option ) {
-                                echo ' is-dismissible" data-dismiss-url="' . esc_url( $dismiss_url );
-                            } ?>">
+                                echo ' is-dismissible" data-dismiss-url="',esc_url( $dismiss_url ),'"';
+                            } ?>>
                             <div class="simple-digital-clock-rate-notice-container">
                                 <div class="logo-img">
-                                    <img alt="<?php echo SDCW_NAME; ?>" src="<?php echo esc_url(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
+                                    <img alt="<?php esc_attr_e(SDCW_NAME); ?>" src="<?php esc_attr_e(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
                                 </div>
                                 <div>
                                     <h2>🥰 <?php esc_html_e('Please rate our free', 'simple-digital-clock'); ?>
-                                    &laquo;<?php echo SDCW_NAME; ?>&raquo;</h2>
+                                    &laquo;<?php esc_html_e(SDCW_NAME); ?>&raquo;</h2>
                                     <hr>
-                                    <p><?php esc_html_e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php esc_html_e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php _e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
-                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php echo esc_url(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_html_e('Rating', 'simple-digital-clock'); ?>"></a></p>
+                                    <p><?php esc_html_e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php esc_html_e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php esc_html_e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
+                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php esc_attr_e(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_attr_e('Rating', 'simple-digital-clock'); ?>"></a></p>
                                 </div>
                             </div>
                         </div>
