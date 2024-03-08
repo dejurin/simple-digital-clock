@@ -45,7 +45,7 @@ Github: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
 4. Add widgets on yourdomain.com/wp-admin/widgets.php page.
 
 == Changelog ==
-= 0.1.0 =
+= 0.1.1 =
 * First release
 
 == 🍩 Donations ==
