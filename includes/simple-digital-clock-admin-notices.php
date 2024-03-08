@@ -34,11 +34,13 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
         }
 
         public function action_admin_init() {
-            echo "OK";
-            $dismiss_option = filter_input( INPUT_GET, 'SDCW_dismiss', FILTER_SANITIZE_EMAIL );
-            if ( is_string( $dismiss_option ) ) {
-                update_option( "SDCW_dismissed_$dismiss_option", true );
-                wp_die();
+            if (isset($_POST['SDCW_dismiss'])) {
+                $dismiss_option = sanitize_text_field($_POST['SDCW_dismiss']);
+                if ( is_string( $dismiss_option ) ) {
+                    update_option( "SDCW_dismissed_$dismiss_option", true );
+                    wp_die();
+                }
+                // Now, $sanitized_user_input is safe to use or store.
             }
         }
 
