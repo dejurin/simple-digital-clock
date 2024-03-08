@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 ?>
 <div class="wrap">
-   <h1 class="wp-heading-inline"><?php esc_html_e(SDCW_NAME, 'simple-digital-clock'); ?></h1>
+   <h1 class="wp-heading-inline"><?php esc_html_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?></h1>
    <hr />
    <h3><?php esc_html_e('Help', 'simple-digital-clock'); ?></h3>
     <ul>
