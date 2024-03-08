@@ -71,14 +71,14 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
                             } ?>>
                             <div class="simple-digital-clock-rate-notice-container">
                                 <div class="logo-img">
-                                    <img alt="<?php esc_attr_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?>" src="<?php echo esc_attr(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
+                                    <img alt="<?php esc_attr_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?>" src="<?php echo esc_url(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
                                 </div>
                                 <div>
                                     <h2>🥰 <?php esc_html_e('Please rate our free', 'simple-digital-clock'); ?>
                                     &laquo;<?php esc_html_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?>&raquo;</h2>
                                     <hr>
                                     <p><?php esc_html_e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php esc_html_e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php esc_html_e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
-                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php esc_url(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_attr_e('Rating', 'simple-digital-clock'); ?>"></a></p>
+                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php echo esc_url(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_attr_e('Rating', 'simple-digital-clock'); ?>"></a></p>
                                 </div>
                             </div>
                         </div>
