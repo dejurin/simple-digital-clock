@@ -5,7 +5,7 @@ Donate link: https://timenow.zone/
 Tested up to: 6.4
 Requires at least: 3.1
 Requires PHP: 5.3
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GNU GPLv3
 License URI: https://choosealicense.com/licenses/gpl-3.0/
 
