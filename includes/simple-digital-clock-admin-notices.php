@@ -54,7 +54,7 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             $user_id = get_current_user_id();
             $hide_notice = get_user_meta($user_id, 'simple_digital_clock_hide_notice', true);
             
-            if ($hide_notice && (time() - $hide_notice < 5)) {
+            if ($hide_notice && (time() - $hide_notice < WEEK_IN_SECONDS)) {
                 return;
             } 
 
