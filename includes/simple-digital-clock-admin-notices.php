@@ -21,9 +21,12 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             foreach (explode( ',', self::TYPES) as $type) {
                 $this->admin_notices->{$type} = [];
             }
-            add_action( 'admin_init', [ &$this, 'action_admin_init' ] );
-            add_action( 'admin_notices', [ &$this, 'action_admin_notices' ] );
-            add_action( 'admin_enqueue_scripts', [ &$this, 'action_admin_enqueue_scripts' ] );
+
+            add_action('admin_notices', [ &$this, 'simple_digital_clock_admin_notice']);
+            add_action('wp_ajax_simple_digital_clock_hide_notice', [ &$this, 'simple_digital_clock_hide_notice' ]);
+            // add_action( 'admin_init', [ &$this, 'action_admin_init' ] );
+            // add_action( 'admin_notices', [ &$this, 'action_admin_notices' ] );
+            // add_action( 'admin_enqueue_scripts', [ &$this, 'action_admin_enqueue_scripts' ] );
         }
 
         public static function get_instance() {
@@ -33,86 +36,41 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             return self::$_instance;
         }
 
-        public function action_admin_init() {
-            if (isset($_POST['SDCW_dismiss'])) {
-                $dismiss_option = sanitize_text_field($_POST['SDCW_dismiss']);
-                if ( is_string( $dismiss_option ) ) {
-                    update_option( "SDCW_dismissed_$dismiss_option", true );
-                    wp_die();
-                }
-                // Now, $sanitized_user_input is safe to use or store.
-            }
+        function simple_digital_clock_hide_notice() {
+            check_ajax_referer('simple-digital-clock-nonce', 'security');
+            $user_id = get_current_user_id();
+            
+            update_user_meta($user_id, 'simple_digital_clock_hide_notice', time());
+            
+            wp_send_json_success();
         }
 
-        public function action_admin_enqueue_scripts() {
-            wp_enqueue_script('jquery');
-            wp_enqueue_script(
-                'simple-digital-clock-notify',
-                SDCW_URL.'assets/admin/js/simple-digital-clock-notify.js',
-                ['jquery']
-            );
-            wp_enqueue_script(
-                'simple-digital-clock',
-                SDCW_URL.'assets/public/js/simple-digital-clock.min.js',
-            );
+        function simple_digital_clock_admin_scripts() {
+            wp_enqueue_script('simple-digital-clock-script', plugin_dir_url(__FILE__) . 'js/simple-digital-clock-script.js', array('jquery'), null, true);
+            wp_localize_script('simple-digital-clock-script', 'simpleDigitalClockAjax', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('simple-digital-clock-nonce')));
         }
 
-        public function action_admin_notices() {
-            foreach ( explode( ',', self::TYPES ) as $type ) {
-                foreach ( $this->admin_notices->{$type} as $admin_notice ) {
-                    $dismiss_url = add_query_arg([
-                        'SDCW_dismiss' => $admin_notice->dismiss_option
-                    ], admin_url() );
-                    $screen = get_current_screen();
-                    if (! get_option( "SDCW_dismissed_{$admin_notice->dismiss_option}" ) == '1' || strpos($screen->id, 'simple-digital-clock') !== false) {
-                        ?><div class="notice is-dismissible simple-digital-clock-notice notice-<?php echo esc_attr($type);
-                            if ( $admin_notice->dismiss_option ) {
-                                echo ' is-dismissible" data-dismiss-url="',esc_url( $dismiss_url ),'"';
-                            } ?>>
-                            <div class="simple-digital-clock-rate-notice-container">
-                                <div class="logo-img">
-                                    <img alt="<?php esc_attr_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?>" src="<?php echo esc_url(SDCW_URL.'assets/admin/img/icon.svg'); ?>" style="width:96px">
-                                </div>
-                                <div>
-                                    <h2>🥰 <?php esc_html_e('Please rate our free', 'simple-digital-clock'); ?>
-                                    &laquo;<?php esc_html_e('Simple Digital Clock 🕒', 'simple-digital-clock'); ?>&raquo;</h2>
-                                    <hr>
-                                    <p><?php esc_html_e('Your valuable feedback will help us improve.', 'simple-digital-clock'); ?><br><?php esc_html_e('It will only take a few minutes', 'simple-digital-clock'); ?>: <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><?php esc_html_e('Rate it now', 'simple-digital-clock'); ?></a> 👍</p>
-                                    <p><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="<?php echo esc_url(SDCW_URL.'assets/admin/img/stars.png'); ?>" alt="<?php esc_attr_e('Rating', 'simple-digital-clock'); ?>"></a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <style>
-                            .simple-digital-clock-rate-notice-container {
-                                display: flex;
-                                padding: 10px 0;
-                            }
-                            .simple-digital-clock-rate-notice-container .logo-img {
-                                margin-right: 15px;
-                            }
-                            .simple-digital-clock-rate-notice-container h2 {
-                                margin: 0;
-                            }
-                            .simple-digital-clock-rate-notice-container p {
-                                padding: 0;
-                                margin: 0;
-                            }
-                        </style><?php
-                    }
-                }
-            }
-        }
+        function simple_digital_clock_admin_notice() {
+            $user_id = get_current_user_id();
+            $hide_notice = get_user_meta($user_id, 'simple_digital_clock_hide_notice', true);
+            
+            if ($hide_notice && (time() - $hide_notice < 5)) {
+                return;
+            } 
 
-        public function error( $message, $dismiss_option = false ) {
-            $this->notice( 'error', $message, $dismiss_option );
-        }
-
-        public function warning( $message, $dismiss_option = false ) {
-            $this->notice( 'warning', $message, $dismiss_option );
-        }
-
-        public function success( $message, $dismiss_option = false ) {
-            $this->notice( 'success', $message, $dismiss_option );
+            echo '<div class="notice notice-info is-dismissible" id="simple-digital-clock-notice">
+            <div style="display:flex;padding:10px 0;">
+                <div style="margin-right:15px;">
+                    <img alt="',esc_attr('Simple Digital Clock 🕒', 'simple-digital-clock'),'" src="', esc_url(SDCW_URL.'assets/admin/img/icon.svg'),'" style="width:96px">
+                </div>
+                <div>
+                    <h2 style="margin:0;">🥰 ',esc_html('Please rate our free', 'simple-digital-clock'),' &laquo; ',esc_html('Simple Digital Clock 🕒', 'simple-digital-clock'),'&raquo;</h2>
+                    <hr>
+                    <p style="padding:0;margin:0;">',esc_html('Your valuable feedback will help us improve.', 'simple-digital-clock'),'<br>',esc_html('It will only take a few minutes', 'simple-digital-clock'),': <a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank">',esc_html('Rate it now', 'simple-digital-clock'),'</a> 👍</p>
+                    <p style="padding:0;margin:0;"><a href="https://wordpress.org/support/plugin/simple-digital-clock/reviews/#new-post" rel="noopener" target="_blank"><img src="',esc_url(SDCW_URL.'assets/admin/img/stars.png'),'" alt="',esc_attr('Rating', 'simple-digital-clock'),'"></a></p>
+                </div>
+            </div>
+        </div>';
         }
 
         public function info( $message, $dismiss_option = false ) {
@@ -123,7 +81,6 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             $notice = new stdClass();
             $notice->message = $message;
             $notice->dismiss_option = $dismiss_option;
-
             $this->admin_notices->{$type}[] = $notice;
         }
     }

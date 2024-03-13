@@ -1,5 +1,5 @@
 # Copyright (C) 2024 TimeNow.zone
-# This file is distributed under the The 3-Clause BSD.
+# This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Digital Clock 🕒 0.1.0\n"
@@ -9,49 +9,35 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-01T10:08:04+00:00\n"
+"POT-Creation-Date: 2024-03-13T11:33:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: simple-digital-clock\n"
 
 #. Plugin Name of the plugin
+#: widget_init.php
+#: includes/simple-digital-clock-admin-settings.php:12
 msgid "Simple Digital Clock 🕒"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: widget_init.php
 msgid "https://timenow.zone/widgets/simple-digital"
 msgstr ""
 
 #. Description of the plugin
+#: widget_init.php
 msgid "The Simple Digital Clock — is a magic 🪄 and easy-to-use with beautiful UI digital clock with support multi-language, locale, date, caption and time zone."
 msgstr ""
 
 #. Author of the plugin
+#: widget_init.php
 msgid "TimeNow.zone"
 msgstr ""
 
 #. Author URI of the plugin
+#: widget_init.php
 msgid "https://timenow.zone/"
-msgstr ""
-
-#: includes/simple-digital-clock-admin-notices.php:70
-msgid "Please rate our free"
-msgstr ""
-
-#: includes/simple-digital-clock-admin-notices.php:73
-msgid "Your valuable feedback will help us improve."
-msgstr ""
-
-#: includes/simple-digital-clock-admin-notices.php:73
-msgid "It will only take a few minutes"
-msgstr ""
-
-#: includes/simple-digital-clock-admin-notices.php:73
-msgid "Rate it now"
-msgstr ""
-
-#: includes/simple-digital-clock-admin-notices.php:74
-msgid "Rating"
 msgstr ""
 
 #: includes/simple-digital-clock-admin-settings.php:14

@@ -3,9 +3,9 @@ Contributors: falselight
 Tags: clock, flash clock, mobile clock, clock widget, local time, timezone, time, digital clock, local times, current time, date, world clock
 Donate link: https://timenow.zone/
 Tested up to: 6.4
-Requires at least: 3.1
+Requires at least: 6.3
 Requires PHP: 5.3
-Stable tag: 0.1.1
+Stable tag: 0.1.0
 License: GNU GPLv3
 License URI: https://choosealicense.com/licenses/gpl-3.0/
 
@@ -45,8 +45,9 @@ Github: https://github.com/Timenow-zone/Simple-Digital-Clock-Widget
 4. Add widgets on yourdomain.com/wp-admin/widgets.php page.
 
 == Changelog ==
-= 0.1.1 =
+= 0.1.0 =
 * First release
 
 == 🍩 Donations ==
 ℹ️ Official website: [widget](https://timenow.zone/widgets/simple-digital)
+ℹ️ Sync Time: [UTC](https://utctime.info/)

@@ -1,3 +1,7 @@
+/**
+ * @version 0.1.0
+ */
+
 (function (blocks, editor, element, components) {
   const { locale, i18n } = blockData;
 
