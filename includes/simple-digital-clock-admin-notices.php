@@ -45,11 +45,6 @@ if ( ! class_exists( 'SDCW_Admin_Notices' ) ) {
             wp_send_json_success();
         }
 
-        function simple_digital_clock_admin_scripts() {
-            wp_enqueue_script('simple-digital-clock-script', plugin_dir_url(__FILE__) . 'js/simple-digital-clock-script.js', array('jquery'), null, true);
-            wp_localize_script('simple-digital-clock-script', 'simpleDigitalClockAjax', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('simple-digital-clock-nonce')));
-        }
-
         function simple_digital_clock_admin_notice() {
             $user_id = get_current_user_id();
             $hide_notice = get_user_meta($user_id, 'simple_digital_clock_hide_notice', true);
