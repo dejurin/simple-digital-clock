@@ -72,7 +72,7 @@ class SDCW_digital_clock_widget
             'Simple Digital Clock',
             'manage_options',
             SDCW_PLUGIN_SLUG,
-            [$this, 'SDCW_admin_settings_page']
+            [$this, 'SDCW_admin_settings_page'],
         );
     }
 
@@ -92,7 +92,8 @@ function SDCW_block_register_block() {
         'simple-digital-clock-block-editor-script',
         plugins_url('block.js', __FILE__),
         ['wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'],
-        filemtime(plugin_dir_path(__FILE__) . 'block.js')
+        filemtime(plugin_dir_path(__FILE__) . 'block.js'),
+        true
     );
 
     // Localize the script with necessary data
@@ -150,7 +151,10 @@ function SDCW_block_register_block() {
 }
 
 function SDCW_admin_scripts() {
-    wp_enqueue_script('simple-digital-clock-script', plugin_dir_url(__FILE__) . 'assets/admin/js/simple-digital-clock-notify.js', array('jquery'), null, true);
+    $script_path = plugin_dir_path(__FILE__) . 'assets/admin/js/simple-digital-clock-notify.js';
+    $version = filemtime($script_path); // Gets the file modification time for cache-busting
+
+    wp_enqueue_script('simple-digital-clock-script', plugin_dir_url(__FILE__) . 'assets/admin/js/simple-digital-clock-notify.js', array('jquery'), $version, true);
     wp_localize_script('simple-digital-clock-script', 'simpleDigitalClockAjax', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('simple-digital-clock-nonce')));
 }
 
