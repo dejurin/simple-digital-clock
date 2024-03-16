@@ -6,8 +6,8 @@ Tested up to: 6.4
 Requires at least: 6.3
 Requires PHP: 5.3
 Stable tag: 0.1.0
-Licence: GNU GPLv3
-Licence URI: https://choosealicense.com/licenses/gpl-3.0/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Is a magic 🪄 and easy-to-use with beautiful UI digital clock with support multi-language, locale, date, caption and time zone.
 
