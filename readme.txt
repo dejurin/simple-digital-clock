@@ -1,13 +1,13 @@
 === Simple Digital Clock 🕒 ===
 Contributors: falselight
-Tags: clock, flash clock, mobile clock, clock widget, local time, timezone, time, digital clock, local times, current time, date, world clock
+Tags: clock, digital clock, local times, current time, world clock
 Donate link: https://timenow.zone/
 Tested up to: 6.4
 Requires at least: 6.3
 Requires PHP: 5.3
 Stable tag: 0.1.0
-License: GNU GPLv3
-License URI: https://choosealicense.com/licenses/gpl-3.0/
+Licence: GNU GPLv3
+Licence URI: https://choosealicense.com/licenses/gpl-3.0/
 
 Is a magic 🪄 and easy-to-use with beautiful UI digital clock with support multi-language, locale, date, caption and time zone.
 
