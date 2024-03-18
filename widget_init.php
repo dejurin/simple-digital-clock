@@ -11,7 +11,7 @@ Description: The Simple Digital Clock — is a magic 🪄 and easy-to-use with b
 Version: 0.1.0
 Author: TimeNow.zone
 Author URI: https://timenow.zone/
-License: GPLv3
+License: GPLv2 or later
 Text Domain: simple-digital-clock
 Domain Path: /languages
 */
